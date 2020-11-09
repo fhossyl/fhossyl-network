@@ -1,14 +1,16 @@
 plugins {
     kotlin("multiplatform") version "1.4.10"
+    kotlin("plugin.serialization") version "1.4.10"
 }
 
 val ktorVersion = "1.4.1"
 val coroutinesVersion = ""
-val serializationVersion = ""
+val serializationVersion = "1.0.1"
 
 allprojects {
 
     plugins.apply("org.jetbrains.kotlin.multiplatform")
+    plugins.apply("org.jetbrains.kotlin.plugin.serialization")
 
     repositories {
         mavenCentral()
@@ -36,10 +38,14 @@ allprojects {
         }
 
         sourceSets {
-            val commonMain by getting
+            val commonMain by getting {
+                dependencies {
+                    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
+                    implementation("io.ktor:ktor-client-core:$ktorVersion")
+                }
+            }
             val commonTest by getting {
                 dependencies {
-                    implementation("io.ktor:ktor-client-core:$ktorVersion")
                     implementation(kotlin("test-common"))
                     implementation(kotlin("test-annotations-common"))
                 }
