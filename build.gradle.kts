@@ -2,8 +2,11 @@ plugins {
     kotlin("multiplatform") version "1.4.10"
 }
 
+val ktorVersion = "1.4.1"
+
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 kotlin {
