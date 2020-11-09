@@ -4,7 +4,7 @@ plugins {
 }
 
 val ktorVersion = "1.4.1"
-val coroutinesVersion = ""
+val coroutinesVersion = "1.4.1"
 val serializationVersion = "1.0.1"
 
 allprojects {
@@ -42,6 +42,7 @@ allprojects {
                 dependencies {
                     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
                     implementation("io.ktor:ktor-client-core:$ktorVersion")
+                    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
                 }
             }
             val commonTest by getting {
