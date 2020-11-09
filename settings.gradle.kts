@@ -1,3 +1,3 @@
 rootProject.name = "fhossyl-network"
 
-include("common", "java", "bedrock")
+include(":common", ":java", ":bedrock")

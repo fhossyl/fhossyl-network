@@ -42,6 +42,7 @@ allprojects {
                 dependencies {
                     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
                     implementation("io.ktor:ktor-client-core:$ktorVersion")
+                    implementation("io.ktor:ktor-io:$ktorVersion")
                     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
                 }
             }
