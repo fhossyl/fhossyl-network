@@ -3,50 +3,58 @@ plugins {
 }
 
 val ktorVersion = "1.4.1"
+val coroutinesVersion = ""
+val serializationVersion = ""
 
-repositories {
-    mavenCentral()
-    jcenter()
-}
+allprojects {
 
-kotlin {
+    plugins.apply("org.jetbrains.kotlin.multiplatform")
 
-    jvm {
-        compilations.all {
-            kotlinOptions.jvmTarget = "1.8"
-        }
-        testRuns["test"].executionTask.configure {
-            useJUnitPlatform()
-        }
-    }
-    val hostOs = System.getProperty("os.name")
-    val isMingwX64 = hostOs.startsWith("Windows")
-
-    val nativeTarget = when {
-        hostOs == "Mac OS X" -> macosX64("native")
-        hostOs == "Linux" -> linuxX64("native")
-        isMingwX64 -> mingwX64("native")
-        else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
+    repositories {
+        mavenCentral()
+        jcenter()
     }
 
-    sourceSets {
-        val commonMain by getting
-        val commonTest by getting {
-            dependencies {
-                implementation("io.ktor:ktor-client-core:$ktorVersion")
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
+    kotlin {
+
+        jvm {
+            compilations.all {
+                kotlinOptions.jvmTarget = "1.8"
+            }
+            testRuns["test"].executionTask.configure {
+                useJUnitPlatform()
             }
         }
-        val jvmMain by getting
-        val jvmTest by getting {
-            dependencies {
-                implementation(kotlin("test-junit5"))
-                implementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
-                runtimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.0")
-            }
+        val hostOs = System.getProperty("os.name")
+        val isMingwX64 = hostOs.startsWith("Windows")
+
+        val nativeTarget = when {
+            hostOs == "Mac OS X" -> macosX64("native")
+            hostOs == "Linux" -> linuxX64("native")
+            isMingwX64 -> mingwX64("native")
+            else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
         }
-        val nativeMain by getting
-        val nativeTest by getting
+
+        sourceSets {
+            val commonMain by getting
+            val commonTest by getting {
+                dependencies {
+                    implementation("io.ktor:ktor-client-core:$ktorVersion")
+                    implementation(kotlin("test-common"))
+                    implementation(kotlin("test-annotations-common"))
+                }
+            }
+            val jvmMain by getting
+            val jvmTest by getting {
+                dependencies {
+                    implementation(kotlin("test-junit5"))
+                    implementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
+                    runtimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.0")
+                }
+            }
+            val nativeMain by getting
+            val nativeTest by getting
+        }
     }
+
 }
