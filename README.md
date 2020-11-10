@@ -9,12 +9,15 @@
 
 # Credits
 
-* [Minecraft Protocol Wiki][protocol]. Information about Minecraft servers and clients have been taken
-  from the Minecraft Protocol Wiki.
+* [Minecraft Protocol Wiki][protocol]. Information about Minecraft servers and clients have been taken from the
+  Minecraft Protocol Wiki.
 
 [actions]: https://github.com/fhosyl/fhossyl-client/actions
 
 [network]: https://github.com/fhossyl/fhossyl-network
-[actions_badge]: https://github.com/fhossyl/fhossyl-client/workflows/Kotlin%20CI%20with%20Gradle/badge.svg
+
+[actions_badge]: https://github.com/fhossyl/fhossyl-network/workflows/Kotlin%20CI%20with%20Gradle/badge.svg
+
 [localized]: https://badges.crowdin.net/fhossyl/localized.svg
+
 [translate]: https://crowdin.com/project/fhossyl
