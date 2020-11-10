@@ -27,6 +27,7 @@ allprojects {
                 useJUnitPlatform()
             }
         }
+
         val hostOs = System.getProperty("os.name")
         val isMingwX64 = hostOs.startsWith("Windows")
 
@@ -41,7 +42,7 @@ allprojects {
             val commonMain by getting {
                 dependencies {
                     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
-                    implementation("io.ktor:ktor-client-core:$ktorVersion")
+                    implementation("io.ktor:ktor-network:$ktorVersion")
                     implementation("io.ktor:ktor-io:$ktorVersion")
                     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
                 }
